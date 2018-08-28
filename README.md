@@ -18,8 +18,7 @@ Features:
 - Layered and functional (logs bubble up)
 
 	Bring logging into the "small reusable packages" era that Node.js and npm
-	popularized by supporting deeply nested logging in way where context isn't
-	lost.
+	popularized by supporting deeply nested logging while preserving context.
 
 	This is especially useful with asynchronous work such as serving HTTP
 	requests: multiple requests may be interleaved and thus a "request ID"
