@@ -1,0 +1,11 @@
+{
+	"name": "logino",
+	"version": "1.0.0",
+	"repository": "srcagency/logino",
+	"scripts": {
+		"test": "node test"
+	},
+	"dependencies": {
+		"tape": "^4.9.1"
+	}
+}
