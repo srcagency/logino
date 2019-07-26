@@ -5,7 +5,8 @@
 	"scripts": {
 		"test": "node test"
 	},
-	"dependencies": {
-		"tape": "^4.9.1"
+	"dependencies": {},
+	"devDependencies": {
+		"tape": "^4.11.0"
 	}
 }
