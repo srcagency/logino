@@ -13,6 +13,20 @@ sublog('Work')
 // [{pid: ...}, 'downstream', 'Work']
 ```
 
+If you need to queue the logs before an out function is ready, omit the `out` function from initialization:
+
+```js
+const logger = require('logino')
+const log = logger()
+
+log('Start')
+log('Work')
+
+log.out(console.log)
+// ['Start']
+// ['Work']
+```
+
 Features:
 
 - Layered and functional (logs bubble up)

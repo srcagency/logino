@@ -1,15 +1,21 @@
 'use strict'
 
-module.exports = init
-
-function init(a, b){
+module.exports = (a = [], b) => {
 	const data = typeof a === 'function' ? [] : (Array.isArray(a) ? a : [a])
-	const out = typeof a === 'function' ? a : b
-	return create(data, out)
-}
+	let queue = []
+	let out = (typeof a === 'function' ? a : b) || (d => queue.push(d))
 
-function create(pdata, out){
-	const log = data => out([...pdata, data])
-	log.create = data => create(data === undefined ? pdata : [...pdata, data], out)
+	const log = create(data)
+	log.out = fn => {
+		out = fn
+		for (const data of queue) out(data)
+		queue = undefined
+	}
 	return log
+
+	function create(pdata) {
+		const log = data => out([...pdata, data])
+		log.create = data => create(data === undefined ? pdata : [...pdata, data], out)
+		return log
+	}
 }
