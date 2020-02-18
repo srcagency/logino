@@ -15,7 +15,7 @@ module.exports = (a = [], b) => {
 
 	function create(pdata) {
 		const log = data => out([...pdata, data])
-		log.create = data => create(data === undefined ? pdata : [...pdata, data], out)
+		log.create = data => create([...pdata, data], out)
 		return log
 	}
 }
