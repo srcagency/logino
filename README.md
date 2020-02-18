@@ -2,18 +2,19 @@
 
 ```js
 const logger = require('logino')
-const log = logger({pid: process.pid}/* optional */, console.log)
+const log = logger({pid: process.pid} /* optional */, console.log)
 
 log('Start')
 // [{pid: ...}, 'Start']
 
-const sublog = log.create('downstream'/* optional */)
+const sublog = log.create('downstream' /* optional */)
 
 sublog('Work')
 // [{pid: ...}, 'downstream', 'Work']
 ```
 
-If you need to queue the logs before an out function is ready, omit the `out` function from initialization:
+If you need to queue the logs before an out function is ready, omit the `out`
+function from initialization:
 
 ```js
 const logger = require('logino')
@@ -31,31 +32,30 @@ Features:
 
 - Layered and functional (logs bubble up)
 
-	Bring logging into the "small reusable packages" era that Node.js and npm
-	popularized by supporting deeply nested logging while preserving context.
+  Bring logging into the "small reusable packages" era that Node.js and npm
+  popularized by supporting deeply nested logging while preserving context.
 
-	This is especially useful with asynchronous work such as serving HTTP
-	requests: multiple requests may be interleaved and thus a "request ID"
-	logged at the beggining is not easily connected to e.g. a log from the
-	database driver.
+  This is especially useful with asynchronous work such as serving HTTP
+  requests: multiple requests may be interleaved and thus a "request ID" logged
+  at the beggining is not easily connected to e.g. a log from the database
+  driver.
 
 - Structured data
 
-	To raise the bar to modern standards from text logging, we should
-	encourage structured data like JSON.
+  To raise the bar to modern standards from text logging, we should encourage
+  structured data like JSON.
 
 - Formatting is defered/external
 
-	Decouple logging and formatting of logging. This library does no
-	formatting.
+  Decouple logging and formatting of logging. This library does no formatting.
 
 - Convention over implementation
 
-	If you publish code others might depend on and want it to log stuff, make
-	it accept a `log` function as argument and use that.
+  If you publish code others might depend on and want it to log stuff, make it
+  accept a `log` function as argument and use that.
 
-	Move the choice of logging software up from deep libraries to DevOps or
-	sysadmins.
+  Move the choice of logging software up from deep libraries to DevOps or
+  sysadmins.
 
 - No super globals
 
@@ -66,11 +66,11 @@ const logger = require('logino')
 const log = logger({pid: process.pid}, console.log)
 
 const srv = http.createServer((req, res) => {
-	const requestId = headers['x-request-id']
+  const requestId = headers['x-request-id']
 
-	log({requestId, method: req.method, url: req.url})
+  log({requestId, method: req.method, url: req.url})
 
-	serveRequest(log.create({requestId}), req, res)
+  serveRequest(log.create({requestId}), req, res)
 })
 
 srv.listen(process.env.PORT)
@@ -79,17 +79,17 @@ srv.on('close', () => log({closed: true}))
 
 setTimeout(() => srv.close(), 10 * 1000)
 
-function serveRequest(log, req, res){
-	getSomethingFromDb(req, (err, result) => {
-		if (err) {
-			log({txt: 'Failed to get stuff from DB', err})
-			res.statusCode = 500
-			res.end()
-		} else {
-			log('Completed')
-			res.end(result)
-		}
-	})
+function serveRequest(log, req, res) {
+  getSomethingFromDb(req, (err, result) => {
+    if (err) {
+      log({txt: 'Failed to get stuff from DB', err})
+      res.statusCode = 500
+      res.end()
+    } else {
+      log('Completed')
+      res.end(result)
+    }
+  })
 }
 
 /*
