@@ -37,7 +37,7 @@ Features:
 
   This is especially useful with asynchronous work such as serving HTTP
   requests: multiple requests may be interleaved and thus a "request ID" logged
-  at the beggining is not easily connected to e.g. a log from the database
+  at the beginning is not easily connected to e.g. a log from the database
   driver.
 
 - Structured data
@@ -45,7 +45,7 @@ Features:
   To raise the bar to modern standards from text logging, we should encourage
   structured data like JSON.
 
-- Formatting is defered/external
+- Formatting is deferred/external
 
   Decouple logging and formatting of logging. This library does no formatting.
 
