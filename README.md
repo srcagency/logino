@@ -28,6 +28,10 @@ log.out(console.log)
 // ['Work']
 ```
 
+`log.out` can also be paused with `log.out(null)`, which will queue logs until
+it is re-routed by invoking `log.out` with a new function - e.g.
+`log.out(console.error)`.
+
 Features:
 
 - Layered and functional (logs bubble up)
