@@ -29,7 +29,7 @@ module.exports = (a = [], b) => {
 
 	function create(pdata) {
 		const log = data => out([...pdata, data])
-		log.create = data => create([...pdata, data], out)
+		log.create = data => create([...pdata, data])
 		return log
 	}
 }
