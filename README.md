@@ -1,7 +1,7 @@
 # Logino
 
 ```js
-const logger = require('logino')
+import logger from 'logino'
 const log = logger({pid: process.pid} /* optional */, console.log)
 
 log('Start')
@@ -17,7 +17,7 @@ If you need to queue the logs before an out function is ready, omit the `out`
 function from initialization:
 
 ```js
-const logger = require('logino')
+import logger from 'logino'
 const log = logger()
 
 log('Start')
@@ -66,7 +66,7 @@ Features:
 ## Example
 
 ```js
-const logger = require('logino')
+import logger from 'logino'
 const log = logger({pid: process.pid}, console.log)
 
 const srv = http.createServer((req, res) => {

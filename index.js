@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (a = [], b) => {
+export default (a = [], b) => {
 	const data = typeof a === 'function' ? [] : Array.isArray(a) ? a : [a]
 	let queue = []
 	let out = (typeof a === 'function' ? a : b) || toQueue

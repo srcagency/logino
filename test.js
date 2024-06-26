@@ -1,7 +1,5 @@
-'use strict'
-
-const test = require('tape')
-const logger = require('./')
+import test from 'tape'
+import logger from './index.js'
 
 test((t) => {
 	const buf = []

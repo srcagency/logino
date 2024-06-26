@@ -2,6 +2,7 @@
 	"name": "logino",
 	"version": "2.1.0",
 	"repository": "srcagency/logino",
+	"type": "module",
 	"scripts": {
 		"test": "node test"
 	},
