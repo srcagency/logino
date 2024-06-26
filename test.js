@@ -3,9 +3,9 @@
 const test = require('tape')
 const logger = require('./')
 
-test(t => {
+test((t) => {
 	const buf = []
-	const log = logger('myservice', e => buf.push(e))
+	const log = logger('myservice', (e) => buf.push(e))
 
 	log('level 1')
 
@@ -22,7 +22,7 @@ test(t => {
 	t.end()
 })
 
-test('Queue namespaced data until `out` is set', t => {
+test('Queue namespaced data until `out` is set', (t) => {
 	const log = logger('myservice')
 
 	log('level 1 A')
@@ -33,7 +33,7 @@ test('Queue namespaced data until `out` is set', t => {
 	sublog('level 2 B')
 
 	const buf = []
-	log.out(e => buf.push(e))
+	log.out((e) => buf.push(e))
 
 	log('level 1 B')
 	sublog('level 2 C')
@@ -50,7 +50,7 @@ test('Queue namespaced data until `out` is set', t => {
 	t.end()
 })
 
-test('Rerouting `out`', t => {
+test('Rerouting `out`', (t) => {
 	const log = logger('myservice')
 
 	log('level 1 A')
@@ -60,12 +60,12 @@ test('Rerouting `out`', t => {
 	sublog('level 2 A')
 
 	const buf = []
-	log.out(e => buf.push(e))
+	log.out((e) => buf.push(e))
 
 	log('level 1 B')
 
 	const buf2 = []
-	log.out(e => buf2.push(e))
+	log.out((e) => buf2.push(e))
 
 	log('level 1 C')
 	sublog('level 2 B')
@@ -84,7 +84,7 @@ test('Rerouting `out`', t => {
 	t.end()
 })
 
-test('Queue data while `out` is detached', t => {
+test('Queue data while `out` is detached', (t) => {
 	const log = logger('myservice')
 
 	log('level 1 A')
@@ -95,7 +95,7 @@ test('Queue data while `out` is detached', t => {
 	sublog('level 2 B')
 
 	const buf = []
-	log.out(e => buf.push(e))
+	log.out((e) => buf.push(e))
 	log.out(null)
 
 	log('level 1 B')
@@ -103,7 +103,7 @@ test('Queue data while `out` is detached', t => {
 	sublog.create('origin')('level 3 A')
 
 	const buf2 = []
-	log.out(e => buf2.push(e))
+	log.out((e) => buf2.push(e))
 
 	t.deepEqual(buf, [
 		['myservice', 'level 1 A'],

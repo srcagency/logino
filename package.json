@@ -8,23 +8,5 @@
 	"dependencies": {},
 	"devDependencies": {
 		"tape": "^5.0.0"
-	},
-	"prettier": {
-		"semi": false,
-		"singleQuote": true,
-		"useTabs": true,
-		"bracketSpacing": false,
-		"trailingComma": "es5",
-		"tabWidth": 4,
-		"proseWrap": "always",
-		"overrides": [
-			{
-				"files": "*.md",
-				"options": {
-					"useTabs": false,
-					"tabWidth": 2
-				}
-			}
-		]
 	}
 }

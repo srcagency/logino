@@ -6,7 +6,7 @@ module.exports = (a = [], b) => {
 	let out = (typeof a === 'function' ? a : b) || toQueue
 
 	const log = create(data)
-	log.out = fn => {
+	log.out = (fn) => {
 		if (fn === undefined) throw new Error('`out` function is `undefined`')
 
 		if (fn === null) {
@@ -28,8 +28,8 @@ module.exports = (a = [], b) => {
 	}
 
 	function create(pdata) {
-		const log = data => out([...pdata, data])
-		log.create = data => create([...pdata, data])
+		const log = (data) => out([...pdata, data])
+		log.create = (data) => create([...pdata, data])
 		return log
 	}
 }
