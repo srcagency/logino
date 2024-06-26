@@ -3,6 +3,7 @@
 	"version": "2.1.0",
 	"repository": "srcagency/logino",
 	"type": "module",
+	"main": "index.js",
 	"scripts": {
 		"test": "node test"
 	},
