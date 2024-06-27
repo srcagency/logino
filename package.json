@@ -3,7 +3,7 @@
 	"version": "3.0.0",
 	"repository": "srcagency/logino",
 	"type": "module",
-	"main": "index.js",
+	"exports": "./index.js",
 	"scripts": {
 		"test": "node test"
 	},
